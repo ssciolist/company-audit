@@ -21,8 +21,8 @@ class CompanyTest < Minitest::Test
     company = Company.new
     result = company.load_employees('./data/employees.csv')
     bad_data_result = company.load_employees('./data/employees.csv')
-binding.pry
-    # assert_equal {success: true, error: nil}, result
-    # assert_equal {success: false, error: 'bad data'}, bad_data_result
+
+    assert_equal company.good_hash, result
+    assert_equal company.bad_hash, bad_data_result
   end
 end
