@@ -27,17 +27,16 @@ class CompanyTest < Minitest::Test
   end
 
   def test_load_projects
-    skip
     company = Company.new
-    result = company.load_projects('./data/employees.csv')
+    result = company.load_projects('./data/projects.csv')
     bad_data_result = company.load_projects('./data/bad_projects.csv')
 
-    assert_equal "abs", result
-    assert_equal "ast", bad_data_result
+    assert_equal company.good_hash, result
+    assert_equal company.bad_hash, bad_data_result
   end
 
   def test_load_timesheets
-    skip
+    # skip
     company = Company.new
     result = company.load_timesheets('./data/timesheets.csv')
     bad_data_result = company.load_employees('./data/bad_timesheets.csv')

@@ -42,4 +42,28 @@ class Company
         bad_hash
       end
   end
+
+  def load_projects(filepath)
+    data = CSV.read(filepath)
+      if data.all? { |row| row.length == 4}
+        CSV.foreach(filepath, headers: false) do |row|
+          @projects << Project.new(row[0], row[1], row[2], row[3])
+        end
+        good_hash
+      else
+        bad_hash
+      end
+  end
+
+  def load_timesheets(filepath)
+    data = CSV.read(filepath)
+      if data.all? { |row| row.length == 4}
+        CSV.foreach(filepath, headers: false) do |row|
+          @timesheets << Timesheet.new(row[0], row[1], row[2], row[3])
+        end
+        good_hash
+      else
+        bad_hash
+      end
+  end
 end
