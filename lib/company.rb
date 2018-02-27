@@ -4,7 +4,8 @@ require './lib/employee'
 class Company
   attr_reader :employees,
               :projects,
-              :timesheets
+              :timesheets,
+              :id
 
   def initialize
     @employees = []
@@ -65,5 +66,13 @@ class Company
       else
         bad_hash
       end
+  end
+
+  def find_employee_by_id(id)
+    @employees.find { |employee| employee.employee_id == id }
+  end
+
+  def find_project_by_id(id)
+    @projects.find { |project| project.id == id }
   end
 end
