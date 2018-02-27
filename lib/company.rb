@@ -32,13 +32,14 @@ class Company
   end
 
   def load_employees(filepath)
-    CSV.foreach(filepath, headers: false) do |row|
-      if row.any? { |element| element.nil?}
-        bad_hash
+    data = CSV.read(filepath)
+      if data.all? { |row| row.length == 5}
+        CSV.foreach(filepath, headers: false) do |row|
+          @employees << Employee.new(row[0], row[1], row[2], row[3], row[4])
+        end
+        good_hash
       else
-      @employees << Employee.new(row[0], row[1], row[2], row[3], row[4])
-      good_hash
+        bad_hash
       end
-    end
   end
 end
