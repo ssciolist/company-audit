@@ -1,6 +1,5 @@
 require './test/test_helper'
 require './lib/company'
-require 'pry'
 
 class CompanyTest < Minitest::Test
   def test_instantiation
