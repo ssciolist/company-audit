@@ -44,4 +44,22 @@ class CompanyTest < Minitest::Test
     assert_equal company.good_hash, result
     assert_equal company.bad_hash, bad_data_result
   end
+
+  def test_find_employee_by_id
+    company = Company.new
+    company.load_employees('./data/employees.csv')
+    result = company.find_employee_by_id(1)
+
+    assert_instance_of Employee, result
+    assert_equal 1, result.employee_id
+  end
+
+  def test_find_project_by_id
+    company = Company.new
+    company.load_projects('./data/projects.csv')
+    result = company.find_project_by_id(1)
+
+    assert_instance_of Project, result
+    assert_equal 1, result.id
+  end
 end
